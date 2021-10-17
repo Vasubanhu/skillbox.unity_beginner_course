@@ -2,8 +2,8 @@
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private int _cueBallPower;
-    [SerializeField] private int _cueBallSpeed;
+    [SerializeField] private float _cueBallPower = 30;
+    [SerializeField] private float _cueBallSpeed = 10;
     [SerializeField] private Transform _balls;
 
     private Rigidbody _rigidbody;
@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        //_rigidbody.AddForce(Vector3.forward * _cueBallPower, ForceMode.Impulse);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -29,7 +30,6 @@ public class GameManager : MonoBehaviour
     {
         Vector3 direction = ball.position - rigidbody.position;
         rigidbody.AddForce(direction.normalized * _cueBallPower, ForceMode.Impulse);
-        //rigidbody.AddForce(Vector3.forward * _cueBallPower, ForceMode.VelocityChange);
     }
 
     private void Update()
