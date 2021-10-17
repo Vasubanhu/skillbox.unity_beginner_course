@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
         {
             _isLaunched = true;
             LaunchBall(_rigidbody, collision.gameObject.transform);
+            Destroy(this);
         }
     }
 
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
     {
         Vector3 direction = ball.position - rigidbody.position;
         rigidbody.AddForce(direction.normalized * _cueBallPower, ForceMode.Impulse);
+        //rigidbody.AddForce(Vector3.forward * _cueBallPower, ForceMode.VelocityChange);
     }
 
     private void Update()
